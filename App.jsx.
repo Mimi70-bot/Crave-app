@@ -1,1 +1,45 @@
+import React, { useState } from 'react';
+import { Search, MapPin, Globe, Box, Bell, Utensils } from 'lucide-react';
 
+const CraveApp = () => {
+  const [activeTab, setActiveTab] = useState('home');
+
+  const colors = {
+    obsidian: "#121212",
+    emerald: "#10b981",
+    surface: "#1e1e1e",
+    text: "#f8fafc"
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen font-sans" style={{ backgroundColor: colors.obsidian, color: colors.text }}>
+      <header className="p-6 flex justify-between items-center border-b border-gray-800">
+        <h1 className="text-2xl font-bold tracking-tighter" style={{ color: colors.emerald }}>CRAVE</h1>
+        <Bell className="w-6 h-6" />
+      </header>
+
+      <main className="flex-1 overflow-y-auto pb-24 p-4">
+        <div className="p-4 rounded-2xl mb-6" style={{ backgroundColor: colors.surface }}>
+          <p className="text-sm opacity-70">Rescue Alert</p>
+          <h2 className="text-lg font-semibold">Your Spinach expires tomorrow!</h2>
+        </div>
+
+        <div className="rounded-3xl overflow-hidden relative mb-6" style={{ backgroundColor: colors.surface }}>
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Food" className="w-full h-64 object-cover opacity-80" />
+          <div className="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black to-transparent">
+            <h3 className="text-xl font-bold">Zesty Summer Bowl</h3>
+          </div>
+        </div>
+      </main>
+
+      <nav className="fixed bottom-6 left-6 right-6 h-16 rounded-2xl flex items-center justify-around shadow-2xl bg-black/80 border border-gray-800">
+        <button onClick={() => setActiveTab('home')} className="p-2"><Utensils style={{ color: colors.emerald }} /></button>
+        <button onClick={() => setActiveTab('inventory')} className="p-2 opacity-40"><Box color="#fff" /></button>
+        <button onClick={() => setActiveTab('map')} className="p-2 opacity-40"><MapPin color="#fff" /></button>
+        <button onClick={() => setActiveTab('translate')} className="p-2 opacity-40"><Globe color="#fff" /></button>
+      </nav>
+    </div>
+  );
+};
+
+export default CraveApp;
